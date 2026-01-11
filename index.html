@@ -180,13 +180,13 @@
         /* Features Section */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
         .feature {
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
             transition: border-color 0.3s, transform 0.3s;
@@ -198,15 +198,15 @@
         }
 
         .feature .number {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: #4a7c23;
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
             margin: 0 auto 1rem;
         }
@@ -214,6 +214,32 @@
         .feature h3 {
             color: #2d5016;
             margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .feature p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* Phase Headers */
+        .phase-header {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #2d5016 0%, #4a7c23 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .phase-header:first-of-type {
+            margin-top: 0;
+        }
+
+        .phase-header h4 {
+            font-size: 1.2rem;
+            margin: 0;
         }
 
         /* Gallery Section */
@@ -419,7 +445,7 @@
         <nav>
             <div class="logo">🌱 VM0042 Tajikistan</div>
             <ul class="nav-links">
-                <li><a href="#about"><span class="lang-en active">About</span><span class="lang-tj">Лоиҳа</span></a></li>
+                <li><a href="#about"><span class="lang-en active">About</span><span class="lang-tj">Дар бора</span></a></li>
                 <li><a href="#methodology"><span class="lang-en active">Methodology</span><span class="lang-tj">Методология</span></a></li>
                 <li><a href="#gallery"><span class="lang-en active">Gallery</span><span class="lang-tj">Галерея</span></a></li>
                 <li><a href="#contact"><span class="lang-en active">Contact</span><span class="lang-tj">Тамос</span></a></li>
@@ -450,7 +476,7 @@
         <div class="content">
             <h2 class="section-title">
                 <span class="lang-en active">About the Project</span>
-                <span class="lang-tj">Лоиҳа</span>
+                <span class="lang-tj">Дар бораи лоиҳа</span>
             </h2>
             <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">
                 <span class="lang-en active">
@@ -511,120 +537,163 @@
     <!-- Methodology Section -->
     <section id="methodology">
         <h2 class="section-title">
-            <span class="lang-en active">10-Step VM0042 Process</span>
-            <span class="lang-tj">Раванди 10-қадамаи VM0042</span>
+            <span class="lang-en active">10-Step VM0042 Implementation Map</span>
+            <span class="lang-tj">Харитаи 10-қадамаи татбиқи VM0042</span>
         </h2>
         <div class="features">
+            
+            <!-- Phase 1 -->
+            <div class="phase-header">
+                <h4>
+                    <span class="lang-en active">PHASE 1 — PREPARATION & ELIGIBILITY</span>
+                    <span class="lang-tj">МАРҲИЛАИ 1 — ТАЙЁРӢ ВА МУВОФИҚАТ</span>
+                </h4>
+            </div>
+            
             <div class="feature">
                 <div class="number">1</div>
                 <div class="lang-en active">
-                    <h3>Define Project</h3>
-                    <p>Choose methodology and define project scope</p>
+                    <h3>Learn the Rules</h3>
+                    <p>Define Project and Choose Methodology (VM0042)</p>
                 </div>
                 <div class="lang-tj">
-                    <h3>Муайян кардани лоиҳа</h3>
-                    <p>Интихоби методология ва муайян кардани доираи лоиҳа</p>
+                    <h3>Омӯхтани қоидаҳо</h3>
+                    <p>Муайян кардани лоиҳа ва интихоби методология (VM0042)</p>
                 </div>
             </div>
+            
             <div class="feature">
                 <div class="number">2</div>
                 <div class="lang-en active">
-                    <h3>Map Fields</h3>
-                    <p>GPS mapping of project areas</p>
+                    <h3>Choose the Fields</h3>
+                    <p>Define the Project Area and GPS Mapping</p>
                 </div>
                 <div class="lang-tj">
-                    <h3>Харитаи майдонҳо</h3>
-                    <p>Харитасозии GPS-и минтақаҳои лоиҳа</p>
+                    <h3>Интихоби майдонҳо</h3>
+                    <p>Муайян кардани минтақаи лоиҳа ва харитасозии GPS</p>
                 </div>
             </div>
+            
             <div class="feature">
                 <div class="number">3</div>
                 <div class="lang-en active">
-                    <h3>Establish Baseline</h3>
-                    <p>Document current farming practices</p>
+                    <h3>Look at the Past</h3>
+                    <p>Establish the Baseline (Current Practices History)</p>
                 </div>
                 <div class="lang-tj">
-                    <h3>Муқаррар кардани асос</h3>
-                    <p>Сабт кардани таҷрибаҳои ҷории кишоварзӣ</p>
+                    <h3>Назар ба гузашта</h3>
+                    <p>Муқаррар кардани асос (таърихи таҷрибаҳои ҷорӣ)</p>
                 </div>
             </div>
+
+            <!-- Phase 2 -->
+            <div class="phase-header">
+                <h4>
+                    <span class="lang-en active">PHASE 2 — ADDITIONALITY & PROJECT DESIGN</span>
+                    <span class="lang-tj">МАРҲИЛАИ 2 — ИЛОВАГӢ ВА ТАРҲРЕЗИИ ЛОИҲА</span>
+                </h4>
+            </div>
+            
             <div class="feature">
                 <div class="number">4</div>
                 <div class="lang-en active">
-                    <h3>Prove Additionality</h3>
-                    <p>Demonstrate project is new and additional</p>
+                    <h3>Prove It's New</h3>
+                    <p>Demonstrate Additionality</p>
                 </div>
                 <div class="lang-tj">
-                    <h3>Исботи иловагӣ</h3>
-                    <p>Нишон додани он ки лоиҳа нав ва иловагӣ аст</p>
+                    <h3>Исбот кунед, ки нав аст</h3>
+                    <p>Нишон додани иловагӣ</p>
                 </div>
             </div>
+            
             <div class="feature">
                 <div class="number">5</div>
                 <div class="lang-en active">
-                    <h3>Select Practices</h3>
-                    <p>Choose improved land management activities</p>
+                    <h3>Plan New Actions</h3>
+                    <p>Select Improved Practices & Design Monitoring Plan</p>
                 </div>
                 <div class="lang-tj">
-                    <h3>Интихоби таҷрибаҳо</h3>
-                    <p>Интихоби фаъолиятҳои беҳтаршудаи идоракунии замин</p>
+                    <h3>Нақшаи амалҳои нав</h3>
+                    <p>Интихоби таҷрибаҳои беҳтар ва тарҳрезии мониторинг</p>
                 </div>
             </div>
+            
             <div class="feature">
                 <div class="number">6</div>
                 <div class="lang-en active">
-                    <h3>Design Monitoring</h3>
-                    <p>Create sampling and monitoring plan</p>
+                    <h3>Ask an Auditor</h3>
+                    <p>Validation by Independent Auditor (VVB)</p>
                 </div>
                 <div class="lang-tj">
-                    <h3>Тарҳрезии мониторинг</h3>
-                    <p>Эҷоди нақшаи намунагирӣ ва мониторинг</p>
+                    <h3>Аз аудитор пурсед</h3>
+                    <p>Тасдиқ аз ҷониби аудитори мустақил (VVB)</p>
                 </div>
             </div>
+
+            <!-- Phase 3 -->
+            <div class="phase-header">
+                <h4>
+                    <span class="lang-en active">PHASE 3 — IMPLEMENTATION & MONITORING</span>
+                    <span class="lang-tj">МАРҲИЛАИ 3 — ТАТБИҚ ВА МОНИТОРИНГ</span>
+                </h4>
+            </div>
+            
             <div class="feature">
                 <div class="number">7</div>
                 <div class="lang-en active">
-                    <h3>Validation</h3>
-                    <p>Third-party auditor review</p>
+                    <h3>Do and Record</h3>
+                    <p>Implement Practices with Farmers (MRV)</p>
                 </div>
                 <div class="lang-tj">
-                    <h3>Тасдиқ</h3>
-                    <p>Баррасии аудитори тарафи сеюм</p>
+                    <h3>Иҷро ва сабт кунед</h3>
+                    <p>Татбиқи таҷрибаҳо бо деҳқонон (MRV)</p>
                 </div>
             </div>
+
+            <!-- Phase 4 -->
+            <div class="phase-header">
+                <h4>
+                    <span class="lang-en active">PHASE 4 — VERIFICATION & CREDITS</span>
+                    <span class="lang-tj">МАРҲИЛАИ 4 — САНҶИШ ВА КРЕДИТҲО</span>
+                </h4>
+            </div>
+            
             <div class="feature">
                 <div class="number">8</div>
                 <div class="lang-en active">
-                    <h3>Implementation</h3>
-                    <p>Execute practices with farmers</p>
+                    <h3>Auditors Check Again</h3>
+                    <p>Verification by Auditor</p>
                 </div>
                 <div class="lang-tj">
-                    <h3>Татбиқ</h3>
-                    <p>Иҷрои таҷрибаҳо бо деҳқонон</p>
+                    <h3>Аудиторҳо боз санҷед</h3>
+                    <p>Санҷиш аз ҷониби аудитор</p>
                 </div>
             </div>
+            
             <div class="feature">
                 <div class="number">9</div>
                 <div class="lang-en active">
-                    <h3>Verification</h3>
-                    <p>Verify results and quantify impact</p>
+                    <h3>Get Credits</h3>
+                    <p>Issuance of VCUs (Verra Registry)</p>
                 </div>
                 <div class="lang-tj">
-                    <h3>Санҷиш</h3>
-                    <p>Тасдиқи натиҷаҳо ва ҳисоб кардани таъсир</p>
+                    <h3>Гирифтани кредитҳо</h3>
+                    <p>Додани VCU (Реестри Verra)</p>
                 </div>
             </div>
+            
             <div class="feature">
                 <div class="number">10</div>
                 <div class="lang-en active">
-                    <h3>Credit Issuance</h3>
-                    <p>Receive verified carbon units</p>
+                    <h3>Sell or Keep</h3>
+                    <p>Transfer & Retirement of Credits</p>
                 </div>
                 <div class="lang-tj">
-                    <h3>Додани кредит</h3>
-                    <p>Гирифтани воҳидҳои тасдиқшудаи карбон</p>
+                    <h3>Фурӯш ё нигоҳ доред</h3>
+                    <p>Интиқол ва истифодаи кредитҳо</p>
                 </div>
             </div>
+            
         </div>
     </section>
 
@@ -727,7 +796,7 @@
         <p style="margin-top: 0.5rem;">
             <span class="lang-en active">Based on </span>
             <span class="lang-tj">Дар асоси </span>
-            <a href="https://verra.org/" target="_blank">
+            <a href="https://verra.org/methodologies/vm0042-methodology-for-improved-agricultural-land-management-v2-2/" target="_blank">
             Verra VM0042 Methodology v2.2</a>
         </p>
     </footer>
