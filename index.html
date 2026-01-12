@@ -177,7 +177,7 @@
             margin-bottom: 1rem;
         }
 
-        /* Features Section */
+        /* Features Section - Clickable Cards */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -189,12 +189,18 @@
             padding: 1.5rem;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
-            transition: border-color 0.3s, transform 0.3s;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+            cursor: pointer;
         }
 
         .feature:hover {
             border-color: #4a7c23;
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(74, 124, 35, 0.2);
         }
 
         .feature .number {
@@ -220,6 +226,22 @@
         .feature p {
             font-size: 0.95rem;
             color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Document icon indicator */
+        .doc-icon {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 5px 10px;
+            background: #e8f5e9;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: #2d5016;
+        }
+
+        .doc-icon:hover {
+            background: #c8e6c9;
         }
 
         /* Phase Headers */
@@ -258,6 +280,7 @@
             overflow: hidden;
             border-radius: 10px;
             aspect-ratio: 4/3;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .gallery-item img {
@@ -276,15 +299,18 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(45, 80, 22, 0.9);
+            background: rgba(45, 80, 22, 0.95);
             color: white;
             padding: 1rem;
-            transform: translateY(100%);
-            transition: transform 0.3s;
         }
 
-        .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
+        .gallery-caption h4 {
+            margin-bottom: 0.3rem;
+        }
+
+        .gallery-caption p {
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
 
         /* Contact Section */
@@ -431,20 +457,7 @@
                 font-size: 0.9rem;
             }
         }
-    
-        /* Make feature cards clickable */
-        a.feature-link {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Document icon styling */
-        .doc-icon {
-            font-size: 1.2rem;
-            margin-left: 0.3rem;
-            vertical-align: middle;
-        }
-</style>
+    </style>
 </head>
 <body>
     <!-- Language Switcher -->
@@ -553,6 +566,10 @@
             <span class="lang-en active">10-Step VM0042 Implementation Map</span>
             <span class="lang-tj">Харитаи 10-қадамаи татбиқи VM0042</span>
         </h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: #666;">
+            <span class="lang-en active">Click on any step to view the detailed guide 📄</span>
+            <span class="lang-tj">Барои дидани роҳнамои муфассал ба ҳар як қадам клик кунед 📄</span>
+        </p>
         <div class="features">
             
             <!-- Phase 1 -->
@@ -563,9 +580,8 @@
                 </h4>
             </div>
             
-            <a href="https://docs.google.com/document/d/1iBwCtgrhv65KQ0Fls4AH6r2Nw--uHReav6M0-iW-eI8/edit?usp=sharing" target="_blank" class="feature-link">
-<div class="feature">
-                <div class="number">1</div><span class="doc-icon" aria-label="Document link">📄</span>
+            <a href="https://docs.google.com/document/d/1iBwCtgrhv65KQ0Fls4AH6r2Nw--uHReav6M0-iW-eI8/edit" target="_blank" class="feature">
+                <div class="number">1</div>
                 <div class="lang-en active">
                     <h3>Learn the Rules</h3>
                     <p>Define Project and Choose Methodology (VM0042)</p>
@@ -574,12 +590,11 @@
                     <h3>Омӯхтани қоидаҳо</h3>
                     <p>Муайян кардани лоиҳа ва интихоби методология (VM0042)</p>
                 </div>
-            </div>
-</a>
+                <span class="doc-icon">📄 Open Guide</span>
+            </a>
             
-            <a href="https://docs.google.com/document/d/1gInbeCdT2AyAzJYu7-j7yaV2zdLN30QbJQxMb0Ad9j8/edit?usp=drive_link" target="_blank" class="feature-link">
-<div class="feature">
-                <div class="number">2</div><span class="doc-icon" aria-label="Document link">📄</span>
+            <a href="https://docs.google.com/document/d/1gInbeCdT2AyAzJYu7-j7yaV2zdLN30QbJQxMb0Ad9j8/edit" target="_blank" class="feature">
+                <div class="number">2</div>
                 <div class="lang-en active">
                     <h3>Choose the Fields</h3>
                     <p>Define the Project Area and GPS Mapping</p>
@@ -588,12 +603,11 @@
                     <h3>Интихоби майдонҳо</h3>
                     <p>Муайян кардани минтақаи лоиҳа ва харитасозии GPS</p>
                 </div>
-            </div>
-</a>
+                <span class="doc-icon">📄 Open Guide</span>
+            </a>
             
-            <a href="https://docs.google.com/document/d/1D10o8z2mdryI03M91YfBUkA6GaxOn5QCPLMkfyREwBI/edit?usp=drive_link" target="_blank" class="feature-link">
-<div class="feature">
-                <div class="number">3</div><span class="doc-icon" aria-label="Document link">📄</span>
+            <a href="https://docs.google.com/document/d/1D10o8z2mdryI03M91YfBUkA6GaxOn5QCPLMkfyREwBI/edit" target="_blank" class="feature">
+                <div class="number">3</div>
                 <div class="lang-en active">
                     <h3>Look at the Past</h3>
                     <p>Establish the Baseline (Current Practices History)</p>
@@ -602,8 +616,8 @@
                     <h3>Назар ба гузашта</h3>
                     <p>Муқаррар кардани асос (таърихи таҷрибаҳои ҷорӣ)</p>
                 </div>
-            </div>
-</a>
+                <span class="doc-icon">📄 Open Guide</span>
+            </a>
 
             <!-- Phase 2 -->
             <div class="phase-header">
@@ -613,9 +627,8 @@
                 </h4>
             </div>
             
-            <a href="https://docs.google.com/document/d/17sBnTtIKPRKav6_X4V5D6mDhtmcoFTlU6gX9EZc2v0I/edit?usp=drive_link" target="_blank" class="feature-link">
-<div class="feature">
-                <div class="number">4</div><span class="doc-icon" aria-label="Document link">📄</span>
+            <a href="https://docs.google.com/document/d/17sBnTtIKPRKav6_X4V5D6mDhtmcoFTlU6gX9EZc2v0I/edit" target="_blank" class="feature">
+                <div class="number">4</div>
                 <div class="lang-en active">
                     <h3>Prove It's New</h3>
                     <p>Demonstrate Additionality</p>
@@ -624,12 +637,11 @@
                     <h3>Исбот кунед, ки нав аст</h3>
                     <p>Нишон додани иловагӣ</p>
                 </div>
-            </div>
-</a>
+                <span class="doc-icon">📄 Open Guide</span>
+            </a>
             
-            <a href="https://docs.google.com/document/d/1yoCHu0YNTt59Y7wART8gcgD4MDnOUuSC8nho5hEBMew/edit?usp=drive_link" target="_blank" class="feature-link">
-<div class="feature">
-                <div class="number">5</div><span class="doc-icon" aria-label="Document link">📄</span>
+            <a href="https://docs.google.com/document/d/1yoCHu0YNTt59Y7wART8gcgD4MDnOUuSC8nho5hEBMew/edit" target="_blank" class="feature">
+                <div class="number">5</div>
                 <div class="lang-en active">
                     <h3>Plan New Actions</h3>
                     <p>Select Improved Practices & Design Monitoring Plan</p>
@@ -638,12 +650,11 @@
                     <h3>Нақшаи амалҳои нав</h3>
                     <p>Интихоби таҷрибаҳои беҳтар ва тарҳрезии мониторинг</p>
                 </div>
-            </div>
-</a>
+                <span class="doc-icon">📄 Open Guide</span>
+            </a>
             
-            <a href="https://docs.google.com/document/d/1-dmiAY7vC3NdvmLavElJHG2bTm26N6cNnPozg2Kv6tk/edit?usp=drive_link" target="_blank" class="feature-link">
-<div class="feature">
-                <div class="number">6</div><span class="doc-icon" aria-label="Document link">📄</span>
+            <a href="https://docs.google.com/document/d/1-dmiAY7vC3NdvmLavElJHG2bTm26N6cNnPozg2Kv6tk/edit" target="_blank" class="feature">
+                <div class="number">6</div>
                 <div class="lang-en active">
                     <h3>Ask an Auditor</h3>
                     <p>Validation by Independent Auditor (VVB)</p>
@@ -652,8 +663,8 @@
                     <h3>Аз аудитор пурсед</h3>
                     <p>Тасдиқ аз ҷониби аудитори мустақил (VVB)</p>
                 </div>
-            </div>
-</a>
+                <span class="doc-icon">📄 Open Guide</span>
+            </a>
 
             <!-- Phase 3 -->
             <div class="phase-header">
@@ -663,9 +674,8 @@
                 </h4>
             </div>
             
-            <a href="https://docs.google.com/document/d/1TNilTLCP7aN5JTDGcwrXt7jW3AzSgLCyfhQuq1tx2dw/edit?usp=drive_link" target="_blank" class="feature-link">
-<div class="feature">
-                <div class="number">7</div><span class="doc-icon" aria-label="Document link">📄</span>
+            <a href="https://docs.google.com/document/d/1TNilTLCP7aN5JTDGcwrXt7jW3AzSgLCyfhQuq1tx2dw/edit" target="_blank" class="feature">
+                <div class="number">7</div>
                 <div class="lang-en active">
                     <h3>Do and Record</h3>
                     <p>Implement Practices with Farmers (MRV)</p>
@@ -674,8 +684,8 @@
                     <h3>Иҷро ва сабт кунед</h3>
                     <p>Татбиқи таҷрибаҳо бо деҳқонон (MRV)</p>
                 </div>
-            </div>
-</a>
+                <span class="doc-icon">📄 Open Guide</span>
+            </a>
 
             <!-- Phase 4 -->
             <div class="phase-header">
@@ -685,9 +695,8 @@
                 </h4>
             </div>
             
-            <a href="https://docs.google.com/document/d/1XR8_1yPPpWQJckS-L14037kZBTQMJ8ZbyL4dir1PFsU/edit?usp=drive_link" target="_blank" class="feature-link">
-<div class="feature">
-                <div class="number">8</div><span class="doc-icon" aria-label="Document link">📄</span>
+            <a href="https://docs.google.com/document/d/1XR8_1yPPpWQJckS-L14037kZBTQMJ8ZbyL4dir1PFsU/edit" target="_blank" class="feature">
+                <div class="number">8</div>
                 <div class="lang-en active">
                     <h3>Auditors Check Again</h3>
                     <p>Verification by Auditor</p>
@@ -696,12 +705,11 @@
                     <h3>Аудиторҳо боз санҷед</h3>
                     <p>Санҷиш аз ҷониби аудитор</p>
                 </div>
-            </div>
-</a>
+                <span class="doc-icon">📄 Open Guide</span>
+            </a>
             
-            <a href="https://docs.google.com/document/d/13RM5Jn_PMfmSsQg5TcFtU6-Pvh_JTLHl-jj8JWJcMvs/edit?usp=drive_link" target="_blank" class="feature-link">
-<div class="feature">
-                <div class="number">9</div><span class="doc-icon" aria-label="Document link">📄</span>
+            <a href="https://docs.google.com/document/d/13RM5Jn_PMfmSsQg5TcFtU6-Pvh_JTLHl-jj8JWJcMvs/edit" target="_blank" class="feature">
+                <div class="number">9</div>
                 <div class="lang-en active">
                     <h3>Get Credits</h3>
                     <p>Issuance of VCUs (Verra Registry)</p>
@@ -710,12 +718,11 @@
                     <h3>Гирифтани кредитҳо</h3>
                     <p>Додани VCU (Реестри Verra)</p>
                 </div>
-            </div>
-</a>
+                <span class="doc-icon">📄 Open Guide</span>
+            </a>
             
-            <a href="https://docs.google.com/document/d/1f6qBPteQEvh7UYNJ-Jg0mFYjQpTiOCOZF41zDdBL75g/edit?usp=drive_link" target="_blank" class="feature-link">
-<div class="feature">
-                <div class="number">10</div><span class="doc-icon" aria-label="Document link">📄</span>
+            <a href="https://docs.google.com/document/d/1f6qBPteQEvh7UYNJ-Jg0mFYjQpTiOCOZF41zDdBL75g/edit" target="_blank" class="feature">
+                <div class="number">10</div>
                 <div class="lang-en active">
                     <h3>Sell or Keep</h3>
                     <p>Transfer & Retirement of Credits</p>
@@ -724,8 +731,8 @@
                     <h3>Фурӯш ё нигоҳ доред</h3>
                     <p>Интиқол ва истифодаи кредитҳо</p>
                 </div>
-            </div>
-</a>
+                <span class="doc-icon">📄 Open Guide</span>
+            </a>
             
         </div>
     </section>
@@ -738,41 +745,41 @@
         </h2>
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600" alt="Farming">
+                <img src="https://drive.google.com/thumbnail?id=1bjR8rWtwtjyciZmVn3FZG-n3uNibPNEo&sz=w800" alt="Zero Tillage Technique">
                 <div class="gallery-caption">
                     <div class="lang-en active">
-                        <h4>Dehqan Farms</h4>
-                        <p>Working with local farmers in Tajikistan</p>
+                        <h4>Zero Tillage Technique</h4>
+                        <p>Zero tillage practice in Tajikistan with emerging crop rows</p>
                     </div>
                     <div class="lang-tj">
-                        <h4>Хоҷагиҳои деҳқонӣ</h4>
-                        <p>Кор бо деҳқонони маҳаллӣ дар Тоҷикистон</p>
+                        <h4>Техникаи бешудгор</h4>
+                        <p>Таҷрибаи бешудгор дар Тоҷикистон бо қаторҳои зироати сабзанда</p>
                     </div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600" alt="Soil">
+                <img src="https://drive.google.com/thumbnail?id=1wm57I8Jy5oGYKN2TcYTmdy7kkuWZ_ivf&sz=w800" alt="Zero Tillage Wheat">
                 <div class="gallery-caption">
                     <div class="lang-en active">
-                        <h4>Soil Health</h4>
-                        <p>Improving soil carbon through better practices</p>
+                        <h4>Zero Tillage Wheat in Dangara</h4>
+                        <p>Fields in Dangara district demonstrating zero-tillage wheat production</p>
                     </div>
                     <div class="lang-tj">
-                        <h4>Саломатии хок</h4>
-                        <p>Беҳтар кардани карбони хок тавассути таҷрибаҳои беҳтар</p>
+                        <h4>Гандуми бешудгор дар Дангара</h4>
+                        <p>Майдонҳо дар ноҳияи Дангара, ки истеҳсоли гандуми бешудгорро нишон медиҳанд</p>
                     </div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=600" alt="Training">
+                <img src="https://drive.google.com/thumbnail?id=1N4QUssYZcv4GHELH3v1R5TJ9OADh_hWu&sz=w800" alt="Sowing Perennial Grasses">
                 <div class="gallery-caption">
                     <div class="lang-en active">
-                        <h4>Training Sessions</h4>
-                        <p>Capacity building for extension specialists</p>
+                        <h4>Sowing Perennial Grasses</h4>
+                        <p>Planting Alexandria clover, alfalfa, sainfoin, and wheatgrass</p>
                     </div>
                     <div class="lang-tj">
-                        <h4>Ҷаласаҳои омӯзишӣ</h4>
-                        <p>Афзоиши қобилият барои мутахассисони тарғиботӣ</p>
+                        <h4>Кишти алафҳои бисёрсола</h4>
+                        <p>Шинондани себаргаи Искандария, юнучқа, эспарсет ва алафи гандум</p>
                     </div>
                 </div>
             </div>
@@ -808,7 +815,7 @@
                     </span>
                 </p>
             </div>
-            <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+            <form class="contact-form" action="https://formspree.io/f/mgooevla" method="POST">
                 <input type="text" name="name" placeholder="Your Name / Номи шумо" required>
                 <input type="email" name="email" placeholder="Your Email / Почтаи электронии шумо" required>
                 <textarea name="message" placeholder="Your Message / Паёми шумо" required></textarea>
