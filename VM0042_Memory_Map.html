@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VM0042 — 10 Steps Memory Map</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ph1: #2C5F2D;
+    --ph1-light: #E8F0E8;
+    --ph2: #B45309;
+    --ph2-light: #FEF3C7;
+    --ph3: #1E40AF;
+    --ph3-light: #DBEAFE;
+    --ph4: #7C3AED;
+    --ph4-light: #EDE9FE;
+    --cream: #FAFAF5;
+    --dark: #1a1a1a;
+    --muted: #6B7280;
+    --card-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--dark);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.6rem;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .header .subtitle {
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+    font-weight: 400;
+  }
+
+  .header .pattern-hint {
+    display: inline-block;
+    margin-top: 1rem;
+    background: var(--dark);
+    color: #fff;
+    padding: 0.4rem 1.4rem;
+    border-radius: 100px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+  }
+
+  .phase {
+    margin-bottom: 1.8rem;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .phase-number {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .phase-title-block { flex: 1; }
+
+  .phase-question {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.55rem;
+    line-height: 1.2;
+  }
+
+  .phase-subtitle {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: 0.1rem;
+  }
+
+  .phase-keyword-strip {
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.2rem 0.8rem;
+    border-radius: 100px;
+    display: inline-block;
+    margin-top: 0.3rem;
+  }
+
+  .steps-row {
+    display: flex;
+    gap: 0.8rem;
+    padding-left: 60px;
+  }
+
+  .step-card {
+    flex: 1;
+    border-radius: 16px;
+    padding: 1.1rem 1rem;
+    transition: transform 0.2s;
+    box-shadow: var(--card-shadow);
+  }
+
+  .step-card:hover { transform: translateY(-2px); }
+
+  .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #fff;
+    margin-bottom: 0.6rem;
+  }
+
+  .step-keyword {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    line-height: 1.15;
+    margin-bottom: 0.4rem;
+  }
+
+  .step-desc {
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: rgba(0,0,0,0.6);
+  }
+
+  .ph1 .phase-number { background: var(--ph1); }
+  .ph1 .phase-question { color: var(--ph1); }
+  .ph1 .phase-keyword-strip { background: var(--ph1-light); color: var(--ph1); }
+  .ph1 .step-card { background: #fff; border-left: 4px solid var(--ph1); }
+  .ph1 .step-num { background: var(--ph1); }
+
+  .ph2 .phase-number { background: var(--ph2); }
+  .ph2 .phase-question { color: var(--ph2); }
+  .ph2 .phase-keyword-strip { background: var(--ph2-light); color: var(--ph2); }
+  .ph2 .step-card { background: #fff; border-left: 4px solid var(--ph2); }
+  .ph2 .step-num { background: var(--ph2); }
+
+  .ph3 .phase-number { background: var(--ph3); }
+  .ph3 .phase-question { color: var(--ph3); }
+  .ph3 .phase-keyword-strip { background: var(--ph3-light); color: var(--ph3); }
+  .ph3 .step-card { background: #fff; border-left: 4px solid var(--ph3); }
+  .ph3 .step-num { background: var(--ph3); }
+
+  .step-card.solo { max-width: 340px; }
+
+  .ph4 .phase-number { background: var(--ph4); }
+  .ph4 .phase-question { color: var(--ph4); }
+  .ph4 .phase-keyword-strip { background: var(--ph4-light); color: var(--ph4); }
+  .ph4 .step-card { background: #fff; border-left: 4px solid var(--ph4); }
+  .ph4 .step-num { background: var(--ph4); }
+
+  .insight-box {
+    margin-top: 2rem;
+    background: var(--dark);
+    color: #fff;
+    border-radius: 20px;
+    padding: 1.8rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .insight-box::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .insight-box h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    color: #fff;
+    text-align: center;
+  }
+
+  .insight-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .insight-block {
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    text-align: center;
+    min-width: 50px;
+  }
+
+  .insight-dash {
+    color: rgba(255,255,255,0.3);
+    font-size: 1.5rem;
+  }
+
+  .insight-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.7;
+    margin-top: 0.2rem;
+    text-align: center;
+  }
+
+  .insight-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.8);
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .insight-text strong { color: #fff; }
+
+  .hands-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.15rem;
+    margin: 1.2rem 0 0.2rem;
+  }
+
+  .finger {
+    font-size: 1.6rem;
+    opacity: 0.9;
+    transition: transform 0.15s;
+  }
+  .finger:hover { transform: scale(1.3); }
+
+  .footer-note {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 700px) {
+    .steps-row { flex-direction: column; padding-left: 0; }
+    .header h1 { font-size: 1.8rem; }
+    .phase-question { font-size: 1.2rem; }
+    .step-keyword { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>VM0042 in Your Head</h1>
+    <div class="subtitle">10 Steps. 10 Words. 10 Fingers.</div>
+    <div class="pattern-hint">3 · 3 · 1 · 3</div>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="phase ph1">
+    <div class="phase-header">
+      <div class="phase-number">PH 1</div>
+      <div class="phase-title-block">
+        <div class="phase-question">"Where am I?"</div>
+        <div class="phase-subtitle">Preparation & Eligibility</div>
+        <div class="phase-keyword-strip">LEARN · MAP · REMEMBER</div>
+      </div>
+    </div>
+    <div class="steps-row">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-keyword">Learn</div>
+        <div class="step-desc">Learn the rules. What is a carbon project? What does VM0042 require? What documents are needed?</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-keyword">Map</div>
+        <div class="step-desc">Map your fields. GPS boundaries, draw strata, define quantification units. This sets the project area.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-keyword">Remember</div>
+        <div class="step-desc">Remember the past. 3+ years of prior management: tillage, crops, fertilizer, irrigation → baseline scenario.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="phase ph2">
+    <div class="phase-header">
+      <div class="phase-number">PH 2</div>
+      <div class="phase-title-block">
+        <div class="phase-question">"Why should anyone believe me?"</div>
+        <div class="phase-subtitle">Additionality & Project Design</div>
+        <div class="phase-keyword-strip">PROVE · PLAN · ASK</div>
+      </div>
+    </div>
+    <div class="steps-row">
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-keyword">Prove</div>
+        <div class="step-desc">Prove it's new. Show this practice is not common (&lt;20% adoption) and faces real barriers. This is additionality.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-keyword">Plan</div>
+        <div class="step-desc">Plan what you'll change. Choose improved regenerative practices. This becomes the project scenario.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">6</div>
+        <div class="step-keyword">Ask</div>
+        <div class="step-desc">Ask an auditor to check. An independent VVB reviews everything you built in Steps 1–5. This is validation.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="phase ph3">
+    <div class="phase-header">
+      <div class="phase-number">PH 3</div>
+      <div class="phase-title-block">
+        <div class="phase-question">"Just do it."</div>
+        <div class="phase-subtitle">Implementation & Monitoring</div>
+        <div class="phase-keyword-strip">DO</div>
+      </div>
+    </div>
+    <div class="steps-row">
+      <div class="step-card solo">
+        <div class="step-num">7</div>
+        <div class="step-keyword">Do</div>
+        <div class="step-desc">Do the work and write it down. Implement the new practices on your land and collect MRV data. This is the only step where the farmer actually farms.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="phase ph4">
+    <div class="phase-header">
+      <div class="phase-number">PH 4</div>
+      <div class="phase-title-block">
+        <div class="phase-question">"Pay me."</div>
+        <div class="phase-subtitle">Verification & Credits</div>
+        <div class="phase-keyword-strip">CHECK · GET · SELL</div>
+      </div>
+    </div>
+    <div class="steps-row">
+      <div class="step-card">
+        <div class="step-num">8</div>
+        <div class="step-keyword">Check</div>
+        <div class="step-desc">Auditor checks again. The VVB verifies that real results match the plan. This is verification.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">9</div>
+        <div class="step-keyword">Get</div>
+        <div class="step-desc">Get credits. Verra issues Verified Carbon Units. Each VCU = 1 tonne CO₂e removed or reduced.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">10</div>
+        <div class="step-keyword">Sell</div>
+        <div class="step-desc">Sell or keep. Trade your credits on the carbon market, or retire them for your own climate goals.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Insight Box -->
+  <div class="insight-box">
+    <h3>The Hidden Pattern</h3>
+
+    <div class="insight-visual">
+      <div>
+        <div class="insight-block" style="background:var(--ph1);">3</div>
+        <div class="insight-label">Paperwork</div>
+      </div>
+      <div class="insight-dash">—</div>
+      <div>
+        <div class="insight-block" style="background:var(--ph2);">3</div>
+        <div class="insight-label">Paperwork</div>
+      </div>
+      <div class="insight-dash">—</div>
+      <div>
+        <div class="insight-block" style="background:var(--ph3);">1</div>
+        <div class="insight-label" style="color:#93C5FD;">FARMING</div>
+      </div>
+      <div class="insight-dash">—</div>
+      <div>
+        <div class="insight-block" style="background:var(--ph4);">3</div>
+        <div class="insight-label">Paperwork</div>
+      </div>
+    </div>
+
+    <div class="insight-text">
+      The lonely <strong>1</strong> in the middle is the actual farming.<br>
+      Everything before it — paperwork to prepare.<br>
+      Everything after it — paperwork to get paid.<br>
+      The farmer's real work is just Step 7. The other 9 steps exist to make Step 7 count.
+    </div>
+
+    <div class="hands-row">
+      <span class="finger" title="1. Learn">☝️</span>
+      <span class="finger" title="2. Map">✌️</span>
+      <span class="finger" title="3. Remember">🤟</span>
+      <span class="finger" style="opacity:0.3">·</span>
+      <span class="finger" title="4. Prove">☝️</span>
+      <span class="finger" title="5. Plan">✌️</span>
+      <span class="finger" title="6. Ask">🤟</span>
+      <span class="finger" style="opacity:0.3">·</span>
+      <span class="finger" title="7. Do">👆</span>
+      <span class="finger" style="opacity:0.3">·</span>
+      <span class="finger" title="8. Check">☝️</span>
+      <span class="finger" title="9. Get">✌️</span>
+      <span class="finger" title="10. Sell">🤟</span>
+    </div>
+  </div>
+
+  <div class="footer-note">VM0042 v2.2 Training · February 2026 · Tajikistan Pilot Project</div>
+
+</div>
+</body>
+</html>
