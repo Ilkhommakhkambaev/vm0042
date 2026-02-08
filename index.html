@@ -264,6 +264,64 @@
             margin: 0;
         }
 
+        /* ===== MEMORY MAP BUTTONS ===== */
+        .memory-map-banner {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding: 1.5rem 2rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .memory-map-banner p {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .memory-map-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .memory-map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .memory-map-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        /* English button — green */
+        .memory-map-btn.btn-en {
+            background: #2C5F2D;
+            color: white;
+        }
+
+        /* Tajik button — amber/orange */
+        .memory-map-btn.btn-tj {
+            background: #B45309;
+            color: white;
+        }
+
+        /* Russian button — blue */
+        .memory-map-btn.btn-ru {
+            background: #1E40AF;
+            color: white;
+        }
+
         /* Gallery Section */
         #gallery {
             background: #f9f9f9;
@@ -408,7 +466,8 @@
         .feature .lang-en, .feature .lang-tj,
         .gallery-caption .lang-en, .gallery-caption .lang-tj,
         .contact-info .lang-en, .contact-info .lang-tj,
-        footer .lang-en, footer .lang-tj {
+        footer .lang-en, footer .lang-tj,
+        .memory-map-banner .lang-en, .memory-map-banner .lang-tj {
             display: none;
         }
 
@@ -417,7 +476,8 @@
         .feature .lang-en.active, .feature .lang-tj.active,
         .gallery-caption .lang-en.active, .gallery-caption .lang-tj.active,
         .contact-info .lang-en.active, .contact-info .lang-tj.active,
-        footer .lang-en.active, footer .lang-tj.active {
+        footer .lang-en.active, footer .lang-tj.active,
+        .memory-map-banner .lang-en.active, .memory-map-banner .lang-tj.active {
             display: block;
         }
 
@@ -455,6 +515,16 @@
             .lang-btn {
                 padding: 5px 10px;
                 font-size: 0.9rem;
+            }
+
+            .memory-map-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .memory-map-btn {
+                width: 80%;
+                justify-content: center;
             }
         }
     </style>
@@ -570,6 +640,33 @@
             <span class="lang-en active">Click on any step to view the detailed guide 📄</span>
             <span class="lang-tj">Барои дидани роҳнамои муфассал ба ҳар як қадам клик кунед 📄</span>
         </p>
+
+        <!-- ===== MEMORY MAP BUTTONS ===== -->
+        <div class="memory-map-banner">
+            <!-- ENGLISH: one button -->
+            <div class="lang-en active">
+                <p>🧠 Quick overview — memorize all 10 steps with one visual map</p>
+                <div class="memory-map-buttons">
+                    <a href="VM0042_Memory_Map.html" target="_blank" class="memory-map-btn btn-en">
+                        🗺️ Open Memory Map
+                    </a>
+                </div>
+            </div>
+            <!-- TAJIK: two buttons (Tajik + Russian) -->
+            <div class="lang-tj">
+                <p>🧠 Шарҳи мухтасар — ҳамаи 10 қадамро бо як харитаи хотира дар хотир нигоҳ доред</p>
+                <div class="memory-map-buttons">
+                    <a href="VM0042_Kharitai_Khotira_TJK.html" target="_blank" class="memory-map-btn btn-tj">
+                        🗺️ Харитаи хотира (Тоҷикӣ)
+                    </a>
+                    <a href="VM0042_Karta_Pamyati_RUS.html" target="_blank" class="memory-map-btn btn-ru">
+                        🗺️ Карта памяти (Русский)
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- ===== END MEMORY MAP BUTTONS ===== -->
+
         <div class="features">
             
             <!-- Phase 1 -->
@@ -838,6 +935,9 @@
             <span class="lang-tj">Дар асоси </span>
             <a href="https://verra.org/methodologies/vm0042-methodology-for-improved-agricultural-land-management-v2-2/" target="_blank">
             Verra VM0042 Methodology v2.2</a>
+        </p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.7;">
+            Developed and designed by <a href="https://ilkhom-makhkambaev.mystrikingly.com/" target="_blank" style="color: #f4a423;">Ilkhom Makhkambaev</a>
         </p>
     </footer>
 
